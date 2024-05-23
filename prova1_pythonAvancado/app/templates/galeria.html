@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+
+{% block main %}
+<div class="d-flex flex-wrap justify-content-around">
+
+    {% for imagem in imagens %}
+    <div class="card flex-fill justify-content-around mb-3" style="border-radius: 5%;max-width: 300px;"> 
+        <div class="card-body d-flex flex-column justify-content-around align-items-center">
+            <h2>{{imagem.titulo}}</h2>
+            <img src="{{imagem.imagem}}"  style="width: 80%; height:auto; border-radius: 10%;" class="mb-3">
+            {% if user.is_authenticated %}
+            <a href="{%url 'remover_galeria' imagem.id %}" class="btn btn-danger">Remover da Galeria</a>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+        <h1> 
+            Não há imagens na galeria
+        </h1>
+        <a class="btn btn-segundary" href="{% url 'home' %}">
+             <h2>
+                Adicionar Imagens
+            </h2>
+        </a>
+    {% endfor %}
+</div>
+{% endblock main %}

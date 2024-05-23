@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block main %}
+<div class="card">
+    <div class="card-header text-center">
+        <h2>Cadastro</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" actiopn="{% url 'cadastro' %}" class="d-flex flex-column align-content-around m-5 gap-2">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-6">
+                    {{form_usuario.first_name}}
+                </div>
+                <div class="col-6">
+                    {{form_usuario.last_name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{form_usuario.email}}
+                </div>
+                <div class="col-6">
+                    {{form_usuario.username}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    {{form_usuario.password}}
+                </div>
+                <div class="col-6">
+                    <input name="confirmacao" type="password" placeholder="Confirmação de Senha" class="form-control my-2 p-2">
+                </div>
+            </div>
+                    
+            
+            
+            
+            <div class="d-flex justify-content-around">
+            <button type="submit" class="btn btn-primary px-5 py-2">Cadastre-se</button>
+            <a href="{%url 'home'%}" class="btn  px-5 py-2"> Cancelar </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}
